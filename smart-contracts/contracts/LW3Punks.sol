@@ -24,4 +24,9 @@ contract LW3Punks is ERC721Enumerable, Ownable {
 
     // total number of tokenIds minted
     uint256 public tokenIds;
+
+    modifier onlyWhenNotPaused {
+        require(!_paused, "Contract currently paused");
+        _;
+    }
 }
