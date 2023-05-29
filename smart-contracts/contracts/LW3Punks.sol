@@ -29,4 +29,13 @@ contract LW3Punks is ERC721Enumerable, Ownable {
         require(!_paused, "Contract currently paused");
         _;
     }
+
+    /**
+        * @dev ERC721 constructor takes in a `name` and a `symbol` to the token collection.
+        * name in our case is `YashPunks` and symbol is `YASP`.
+        * Constructor for YASP takes in the baseURI to set _baseTokenURI for the collection.
+        */
+    constructor (string memory baseURI) ERC721("YashPunks", "YASP") {
+        _baseTokenURI = baseURI;
+    }
 }
