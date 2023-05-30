@@ -38,4 +38,14 @@ contract LW3Punks is ERC721Enumerable, Ownable {
     constructor (string memory baseURI) ERC721("YashPunks", "YASP") {
         _baseTokenURI = baseURI;
     }
+
+    /**
+    * @dev mint allows an user to mint 1 NFT per transaction.
+    */
+    function mint() public payable onlyWhenNotPaused {
+        require(tokenIds < maxTokenIds, "Exceed maximum LW3Punks supply");
+        require(msg.value >= _price, "Ether sent is not correct");
+        tokenIds += 1;
+        _safeMint(msg.sender, tokenIds);
+    }
 }
