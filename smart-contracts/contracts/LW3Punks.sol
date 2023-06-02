@@ -71,4 +71,11 @@ contract LW3Punks is ERC721Enumerable, Ownable {
         // If baseURI is empty return an empty string
         return bytes(baseURI).length > 0 ? string(abi.encodePacked(baseURI, tokenId.toString(), ".json")) : "";
     }
+
+    /**
+    * @dev setPaused makes the contract paused or unpaused
+        */
+    function setPaused(bool val) public onlyOwner {
+        _paused = val;
+    }
 }
