@@ -89,4 +89,10 @@ contract LW3Punks is ERC721Enumerable, Ownable {
         (bool sent, ) =  _owner.call{value: amount}("");
         require(sent, "Failed to send Ether");
     }
+
+    // Function to receive Ether. msg.data must be empty
+    receive() external payable {}
+
+    // Fallback function is called when msg.data is not empty
+    fallback() external payable {}
 }
