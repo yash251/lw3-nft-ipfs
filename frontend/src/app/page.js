@@ -134,6 +134,31 @@ export default function Home() {
       }, 5 * 1000);
     }
   }, [walletConnected]);
+
+  /*
+    renderButton: Returns a button based on the state of the dapp
+  */
+  const renderButton = () => {
+    // If wallet is not connected, return a button which allows them to connect their wallet
+    if (!walletConnected) {
+      return (
+        <button onClick={connectWallet} className={styles.button}>
+          Connect your wallet
+        </button>
+      );
+    }
+
+    // If we are currently waiting for something, return a loading button
+    if (loading) {
+      return <button className={styles.button}>Loading...</button>;
+    }
+
+    return (
+      <button className={styles.button} onClick={publicMint}>
+        Public Mint 🚀
+      </button>
+    );
+  };
   
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
